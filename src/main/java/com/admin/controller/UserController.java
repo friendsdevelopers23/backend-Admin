@@ -12,39 +12,43 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 
-
-
 public class UserController {
-	
-	 private final UserService userService;
 
-	    @Autowired
-	    public UserController(UserService userService) {
-	        this.userService = userService;
-	    }
+	@Autowired
+	public final UserService userService;
 
-	    @GetMapping
-	    public List<UserModel> getAllUsers() {
-	        return userService.getAllUsers();
-	    }
-
-	    @GetMapping("/{id}")
-	    public Optional<UserModel> getUserById(@PathVariable Long id) {
-	        return userService.getUserById(id);
-	    }
-
-	    @PostMapping
-	    public UserModel createUser(@RequestBody UserModel user) {
-	        return userService.createUser(user);
-	    }
-
-	    @PutMapping("/{id}")
-	    public UserModel updateUser(@PathVariable Long id, @RequestBody UserModel updatedUser) {
-	        return userService.updateUser(id, updatedUser);
-	    }
-
-	    @DeleteMapping("/{id}")
-	    public void deleteUser(@PathVariable Long id) {
-	        userService.deleteUser(id);
-	    }
+	public UserController(UserService userService) {
+		this.userService = userService;
 	}
+
+	@GetMapping(path = "/testVal")
+	public void getUsers() {
+		System.out.println("Reached ----------------");
+
+	}
+
+	@GetMapping
+	public List<UserModel> getAllUsers() {
+		return userService.getAllUsers();
+	}
+
+	@GetMapping("/{id}")
+	public Optional<UserModel> getUserById(@PathVariable Long id) {
+		return userService.getUserById(id);
+	}
+
+	@PostMapping
+	public UserModel createUser(@RequestBody UserModel user) {
+		return userService.createUser(user);
+	}
+
+	@PutMapping("/{id}")
+	public UserModel updateUser(@PathVariable Long id, @RequestBody UserModel updatedUser) {
+		return userService.updateUser(id, updatedUser);
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable Long id) {
+		userService.deleteUser(id);
+	}
+}
