@@ -24,7 +24,6 @@ public class UserModel {
     public UserModel() {
     }
     
-  
 
 	public String getEmail() {
 		return email;
